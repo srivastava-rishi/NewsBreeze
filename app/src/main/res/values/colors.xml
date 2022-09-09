@@ -85,4 +85,9 @@
     <color name="yellow">#EDE123</color>
     <color name="grey">#dddddd</color>
 
+    //
+    <color name="background">#F8F8FB</color>
+    <color name="tt_background">#c1c0bf</color>
+    <color name="title_color">#181818</color>
+
 </resources>

@@ -65,4 +65,11 @@
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_2sdp</item>
+        <item name="android:radius">@dimen/_8sdp</item>
+        <item name="android:background">#E8E8F7</item>
+    </style>
+
 </resources>
