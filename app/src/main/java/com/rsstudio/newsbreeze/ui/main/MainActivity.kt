@@ -1,13 +1,12 @@
 package com.rsstudio.newsbreeze.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.rsstudio.newsbreeze.R
 import com.rsstudio.newsbreeze.databinding.ActivityMainBinding
-import com.rsstudio.newsbreeze.databinding.ActivitySplashBinding
+import com.rsstudio.newsbreeze.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
