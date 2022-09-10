@@ -51,14 +51,11 @@ class MainActivity : BaseActivity() {
                 val list: MutableList<News> = mutableListOf()
                 list.add(it.body()!!)
                 mainAdapter.submitList(list[0].articles)
-                Log.d(logTag, "data: ${it.body()} ")
+                Log.d(logTag, "data: ${it.body()!!.articles[0].publishedAt} ")
 
             }else {
                 Log.d(logTag, "error: ${it.errorBody()} ")
             }
         }
-
-
-
     }
 }

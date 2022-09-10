@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsBreeze">
         <activity
+            android:name=".ui.fullnews.FullNewsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.base.BaseActivity"
             android:exported="false" />
         <activity
@@ -22,20 +25,18 @@
             android:resizeableActivity="false"
             android:screenOrientation="portrait"
             android:theme="@style/Simple_Theme_2">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
+            android:exported="false"
             android:resizeableActivity="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Simple_Theme_2"
-            android:exported="false" />
+            android:theme="@style/Simple_Theme_2" />
     </application>
 
 </manifest>

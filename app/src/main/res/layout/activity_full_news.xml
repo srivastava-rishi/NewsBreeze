@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fullnews.FullNewsActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/pic3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:backgroundTint="@color/antiqueWhite"
+                android:src="@drawable/ic_back"
+                android:visibility="visible"
+                app:tint="@color/white" />
+
+
+            <ImageView
+                android:id="@+id/ivUnSaved"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:backgroundTint="@color/antiqueWhite"
+                android:src="@drawable/ic_unsave"
+                android:visibility="visible"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/ivSaved"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:backgroundTint="@color/antiqueWhite"
+                android:src="@drawable/ic_unsave"
+                android:visibility="gone"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                fontPath="fonts/queens.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_80sdp"
+                android:text="29-03-21"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                fontPath="fonts/Queens Park Bold.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDate"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:breakStrategy="high_quality"
+                android:lineSpacingExtra="@dimen/_3sdp"
+                android:maxLines="2"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="MissingPrefix" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tvTitle"
+                android:backgroundTint="@color/background"
+                app:cardCornerRadius="@dimen/_28sdp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_18sdp">
+
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/reporterPic"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginStart="@dimen/_18sdp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pic3"
+                        android:visibility="visible"
+                        app:riv_corner_radius="@dimen/_5sdp" />
+
+                    <LinearLayout
+                        android:id="@+id/llReporterInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_toStartOf="@id/rlSave"
+                        android:layout_toEndOf="@+id/reporterPic"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/tvName"
+                            fontPath="fonts/queens.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="James Adam"
+                            android:textColor="@color/chineseBlack2"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+
+                        <TextView
+                            android:id="@+id/tvSource"
+                            fontPath="fonts/queens.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lorem Correspondent"
+                            android:textColor="@color/tt_background"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlSave"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/_18sdp"
+                        android:background="@drawable/unsave_background"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/tvSave"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:backgroundTint="@color/antiqueWhite"
+                            android:text="Save"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvContent"
+                        fontPath="fonts/queens.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rlSave"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_23sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:breakStrategy="high_quality"
+                        android:lineSpacingExtra="@dimen/_3sdp"
+                        android:maxLines="2"
+                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        fontPath="fonts/queens.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvContent"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:breakStrategy="high_quality"
+                        android:lineSpacingExtra="@dimen/_3sdp"
+                        android:text="Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content. It helps designers plan out where the content will sit, without needing to wait for the content to be written and approved. It originally comes from a Latin text, but to today's reader, it's seen as gibberish"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        tools:ignore="MissingPrefix" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>
