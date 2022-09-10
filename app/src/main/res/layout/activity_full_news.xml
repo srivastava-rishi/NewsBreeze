@@ -7,12 +7,13 @@
     <RelativeLayout
         android:id="@+id/rlRoot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/pic3">
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/rlBb"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/_300sdp"
+            android:background="@drawable/pic3" />
 
             <ImageView
                 android:id="@+id/ivBack"
@@ -172,7 +173,7 @@
                         android:layout_marginBottom="@dimen/_8sdp"
                         android:breakStrategy="high_quality"
                         android:lineSpacingExtra="@dimen/_3sdp"
-                        android:maxLines="2"
+                        android:maxLines="5"
                         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
@@ -190,6 +191,7 @@
                         android:layout_marginBottom="@dimen/_8sdp"
                         android:breakStrategy="high_quality"
                         android:lineSpacingExtra="@dimen/_3sdp"
+                        android:maxLines="5"
                         android:text="Lorem Ipsum, sometimes referred to as 'lipsum', is the placeholder text used in design when creating content. It helps designers plan out where the content will sit, without needing to wait for the content to be written and approved. It originally comes from a Latin text, but to today's reader, it's seen as gibberish"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
@@ -201,8 +203,6 @@
 
             </androidx.cardview.widget.CardView>
 
-
-        </RelativeLayout>
 
 
     </RelativeLayout>

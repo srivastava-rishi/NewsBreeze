@@ -1,7 +1,8 @@
 package com.rsstudio.newsbreeze.data.network.model
 
-data class ArticleData(
+import java.io.Serializable
 
+data class ArticleData(
     val source: SourceData,
     val author: String?,
     val title: String,
@@ -10,4 +11,4 @@ data class ArticleData(
     val urlToImage: String,
     val publishedAt: String,
     val content: String
-    )
+    ): Serializable
