@@ -36,13 +36,35 @@
                 android:src="@drawable/pic" />
 
             <RelativeLayout
-                android:id="@+id/rlUnsaved"
+                android:id="@+id/rlSaved"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginRight="@dimen/_12sdp"
                 android:background="@drawable/unsave_background"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ivSaved"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@color/antiqueWhite"
+                    android:src="@drawable/ic_save"
+                    android:visibility="visible"
+                    app:tint="@color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlUnSaved"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:background="@drawable/save_background"
                 android:visibility="visible">
 
                 <ImageView
@@ -51,7 +73,7 @@
                     android:layout_height="@dimen/_10sdp"
                     android:layout_centerInParent="true"
                     android:backgroundTint="@color/antiqueWhite"
-                    android:src="@drawable/ic_save"
+                    android:src="@drawable/ic_unsave"
                     android:visibility="visible"
                     app:tint="@color/white" />
 
@@ -72,6 +94,10 @@
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:breakStrategy="high_quality"
+        android:lineSpacingExtra="@dimen/_2sdp"
+        android:maxLines="2"
         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ips"
         android:textColor="@color/title_color"
         android:textSize="@dimen/_12ssp"
@@ -89,6 +115,8 @@
         android:layout_marginEnd="@dimen/_40sdp"
         android:ellipsize="end"
         android:maxLines="3"
+        android:breakStrategy="high_quality"
+        android:lineSpacingExtra="@dimen/_2sdp"
         android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
         android:textColor="@color/title_color"
         android:textSize="@dimen/_10ssp"
@@ -102,8 +130,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvContent"
         android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
         android:text="29-03-21"
         android:textColor="@color/tt_background"
         android:textSize="@dimen/_10ssp"

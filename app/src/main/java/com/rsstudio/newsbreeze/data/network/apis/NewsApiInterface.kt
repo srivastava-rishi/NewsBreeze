@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface NewsApiInterface {
 
-    @GET("top-headlines?country=us&apiKey=")
+    @GET("top-headlines?country=in&apiKey=")
     suspend fun getNewsData(): Response<News>
 }
