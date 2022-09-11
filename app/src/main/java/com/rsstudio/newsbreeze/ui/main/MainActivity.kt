@@ -91,12 +91,21 @@ class MainActivity : BaseActivity() , MainAdapter.MainAdapterListener , View.OnC
             if (it.isSuccessful) {
                 val list: MutableList<News> = mutableListOf()
                 list.add(it.body()!!)
-
                 mainAdapter.submitList(list[0].articles)
                 binding.iLoader.visibility = View.GONE
 
-            }else {
+            }
+            else {
                 Log.d(logTag, "error: ${it.errorBody()} ")
+
+                binding.tvError.text = "No news found"
+                binding.tvError.visibility = View.VISIBLE
+                //make it go away
+                binding.rlTop.visibility = View.GONE
+                binding.rlSearch.visibility = View.GONE
+                binding.rvNews.visibility = View.GONE
+                binding.iLoader.visibility = View.GONE
+
             }
         }
     }

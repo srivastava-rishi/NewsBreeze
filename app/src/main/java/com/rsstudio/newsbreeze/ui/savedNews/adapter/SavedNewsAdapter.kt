@@ -38,7 +38,7 @@ class SavedNewsAdapter(
         @SuppressLint("UseCompatLoadingForColorStateLists")
         fun onBind(item: SavedNewsEntity, position: Int) {
 
-            tvDate.text = item.title
+            tvTitle.text = item.title
 
             if (item.author != null) {
                 tvAuthor.text = item.author

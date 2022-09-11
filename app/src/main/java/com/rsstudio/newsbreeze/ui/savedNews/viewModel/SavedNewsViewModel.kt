@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.rsstudio.newsbreeze.data.local.database.SavedNewsDatabase
 import com.rsstudio.newsbreeze.data.local.entity.SavedNewsEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +21,8 @@ constructor(
     var logTag = "@SavedNewsViewModel"
 
     // the pattern that i usually follow
-    private val _localNewsData: MutableLiveData<List<SavedNewsEntity>> = MutableLiveData()
-    val localNewsData: LiveData<List<SavedNewsEntity>> get() = _localNewsData
+    private val _localNewsData: MutableLiveData<MutableList<SavedNewsEntity>> = MutableLiveData()
+    val localNewsData: LiveData<MutableList<SavedNewsEntity>> get() = _localNewsData
 
 
     init {
@@ -30,9 +31,9 @@ constructor(
 
     private fun getNews(){
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = localRepository.savedNewsDao().getAllSavedNews()
-            _localNewsData.value = result
+            _localNewsData.postValue(result)
         }
     }
 

@@ -11,7 +11,7 @@ interface SavedNewsDao {
     suspend fun insertSavedNews(savedNewsEntity: SavedNewsEntity)
 
     @Query("SELECT * FROM savedNews")
-    fun getAllSavedNews() : List<SavedNewsEntity>
+    fun getAllSavedNews() : MutableList<SavedNewsEntity>
 
     @Query("DELETE FROM savedNews")
     fun deleteAllSavedNews()

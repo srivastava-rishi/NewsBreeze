@@ -53,9 +53,8 @@
         fontPath="fonts/Queens Park Bold.ttf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         android:layout_marginBottom="@dimen/_4sdp"
         android:layout_toEndOf="@id/cvNewsImage"
@@ -74,7 +73,6 @@
         android:layout_below="@+id/tvTitle"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_14sdp"
         android:layout_toEndOf="@id/cvNewsImage"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -105,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="James Adam"
+            android:maxLines="1"
             android:textColor="@color/tt_background"
             android:textSize="@dimen/_9ssp"
             tools:ignore="MissingPrefix" />
