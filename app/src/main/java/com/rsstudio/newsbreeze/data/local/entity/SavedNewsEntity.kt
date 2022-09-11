@@ -3,12 +3,11 @@ package com.rsstudio.newsbreeze.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "savedNews")
+@Entity(tableName = "savedNews" , primaryKeys = ["id"])
 data class SavedNewsEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int ,
+    val id: Int,
     val title: String,
-    val urlToImage: String,
+    val urlToImage: String? = null,
     val publishedAt: String,
-    val author: String,
+    var author: String? = null
 )

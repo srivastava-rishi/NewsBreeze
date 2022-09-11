@@ -3,6 +3,7 @@ package com.rsstudio.newsbreeze.data.network.model
 import java.io.Serializable
 
 data class ArticleData(
+    var id: Int? = null,
     val source: SourceData,
     val author: String?,
     val title: String,

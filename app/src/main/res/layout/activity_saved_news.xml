@@ -101,10 +101,8 @@
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:clickable="true"
-            android:focusable="true"
+            android:visibility="gone"
             android:minHeight="@dimen/_110sdp"
-            android:foreground="@drawable/ripple_light"
             android:backgroundTint="@color/white">
 
 
@@ -114,13 +112,14 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvNews"
+                    android:id="@+id/rvSavedNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginEnd="@dimen/_4sdp"
                     android:overScrollMode="never" />
+
 
 
             </RelativeLayout>

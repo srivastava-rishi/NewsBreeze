@@ -8,10 +8,10 @@ import com.rsstudio.newsbreeze.data.local.entity.SavedNewsEntity
 interface SavedNewsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNews(savedNewsEntity: SavedNewsEntity)
+    suspend fun insertSavedNews(savedNewsEntity: SavedNewsEntity)
 
     @Query("SELECT * FROM savedNews")
-    fun getSavedProductData() : LiveData<List<SavedNewsEntity>>
+    fun getAllSavedNews() : List<SavedNewsEntity>
 
     @Query("DELETE FROM savedNews")
     fun deleteAllSavedNews()

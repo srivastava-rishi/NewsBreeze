@@ -1,8 +1,11 @@
 package com.rsstudio.newsbreeze.di
 
+import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.rsstudio.newsbreeze.app.App
+import com.rsstudio.newsbreeze.data.local.database.SavedNewsDatabase
 import com.rsstudio.newsbreeze.data.network.apis.NewsApiInterface
 import com.rsstudio.newsbreeze.util.Constant
 import dagger.Module
@@ -32,5 +35,13 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(NewsApiInterface::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideSavedNewsDb(app: Application): SavedNewsDatabase =
+        Room.databaseBuilder(app, SavedNewsDatabase::class.java,"savedNewsDb")
+            .build()
+
 
 }

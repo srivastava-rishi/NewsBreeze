@@ -8,6 +8,6 @@ import com.rsstudio.newsbreeze.data.local.entity.SavedNewsEntity
 @Database(entities = [SavedNewsEntity::class], version = 1)
 abstract class SavedNewsDatabase:  RoomDatabase() {
 
-    abstract fun newsDao(): SavedNewsDao
+    abstract fun savedNewsDao(): SavedNewsDao
 
 }

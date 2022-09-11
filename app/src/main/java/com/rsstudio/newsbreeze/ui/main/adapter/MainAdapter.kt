@@ -1,7 +1,9 @@
 package com.rsstudio.newsbreeze.ui.main.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.makeramen.roundedimageview.RoundedImageView
 import com.rsstudio.newsbreeze.R
+import com.rsstudio.newsbreeze.data.local.helper.SavedNewsHelper
 import com.rsstudio.newsbreeze.data.network.model.ArticleData
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -33,13 +36,27 @@ class MainAdapter(
         var tvTitle: TextView = view.findViewById(R.id.tvTitle)
         var tvContent: TextView = view.findViewById(R.id.tvContent)
         var ivNewsImage: ImageView = view.findViewById(R.id.ivNewsImage)
-        var rlSavedNews: RelativeLayout = view.findViewById(R.id.rlSaved)
-        var rlUnsavedNews: RelativeLayout = view.findViewById(R.id.rlSaved)
+        var rlSavedNewsBackground: RelativeLayout = view.findViewById(R.id.rlSavedIcon)
+        var rlSavedNewsIcon: ImageView = view.findViewById(R.id.ivSave)
+        var rlSave: RelativeLayout = view.findViewById(R.id.rlSave)
         var rlRead: RelativeLayout = view.findViewById(R.id.rlRead)
+
 
         var container: RelativeLayout = view.findViewById(R.id.rlRoot)
 
+        @SuppressLint("UseCompatLoadingForColorStateLists")
         fun onBind(item: ArticleData, position: Int) {
+
+            item.id = position
+
+            if (SavedNewsHelper.allSavedNewsList.contains(item.id)) {
+                rlSavedNewsBackground.backgroundTintList = context.resources.getColorStateList(R.color.green);
+                rlSavedNewsIcon.setImageResource(R.drawable.ic_save)
+            }
+            else{
+                rlSavedNewsBackground.backgroundTintList = context.resources.getColorStateList(R.color.grey9)
+                rlSavedNewsIcon.setImageResource(R.drawable.ic_unsave)
+            }
 
             tvTitle.text = item.title
             tvContent.text = item.description
@@ -47,6 +64,11 @@ class MainAdapter(
 
             rlRead.setOnClickListener {
                 listener.onReadClicked(item)
+            }
+
+            // on saved news click
+            rlSave.setOnClickListener {
+                listener.onSaveNewsClicked(item,rlSavedNewsBackground,rlSavedNewsIcon,position)
             }
 
             // setting image
@@ -58,7 +80,6 @@ class MainAdapter(
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(ivNewsImage)
-
 
         }
 
@@ -85,6 +106,14 @@ class MainAdapter(
         notifyDataSetChanged()
     }
 
+    fun refreshItem(item: ArticleData) {
+        val pos = list.indexOf(item)
+        if(pos>-1 && pos<list.size){
+            notifyItemChanged(pos)
+        }
+        Log.d(logTag, "refreshItem: $item")
+    }
+
 
     override fun getItemCount(): Int {
         if (list.size != 0) {
@@ -95,5 +124,6 @@ class MainAdapter(
 
     interface MainAdapterListener {
         fun onReadClicked(item: ArticleData)
+        fun onSaveNewsClicked(item: ArticleData,imageBackground: RelativeLayout , image: ImageView,position: Int)
     }
 }
