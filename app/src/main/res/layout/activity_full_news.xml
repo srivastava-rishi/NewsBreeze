@@ -15,17 +15,17 @@
             android:layout_height="@dimen/_300sdp"
             android:background="@drawable/pic3" />
 
-            <ImageView
-                android:id="@+id/ivBack"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:backgroundTint="@color/antiqueWhite"
-                android:src="@drawable/ic_back"
-                android:visibility="visible"
-                app:tint="@color/white" />
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:backgroundTint="@color/antiqueWhite"
+            android:src="@drawable/ic_back"
+            android:visibility="visible"
+            app:tint="@color/white" />
 
 
             <ImageView
@@ -52,17 +52,17 @@
                 android:visibility="gone"
                 app:tint="@color/white" />
 
-            <TextView
-                android:id="@+id/tvDate"
-                fontPath="fonts/queens.ttf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_80sdp"
-                android:text="29-03-21"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                tools:ignore="MissingPrefix" />
+        <TextView
+            android:id="@+id/tvDate"
+            fontPath="fonts/queens.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:text="29-03-21"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="MissingPrefix" />
 
             <TextView
                 android:id="@+id/tvTitle"
