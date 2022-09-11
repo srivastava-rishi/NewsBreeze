@@ -14,7 +14,6 @@ import com.rsstudio.newsbreeze.ui.base.BaseActivity
 import com.rsstudio.newsbreeze.ui.savedNews.adapter.SavedNewsAdapter
 import com.rsstudio.newsbreeze.ui.savedNews.viewModel.SavedNewsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.log
 
 @AndroidEntryPoint
 class SavedNewsActivity : BaseActivity(), View.OnClickListener {
@@ -53,21 +52,17 @@ class SavedNewsActivity : BaseActivity(), View.OnClickListener {
 
         viewModel.localNewsData.observe(this) {
 
-            if (it != null) {
+            if (it != null && it.isNotEmpty()) {
                 val list: MutableList<SavedNewsEntity> = mutableListOf()
                 list.addAll(it)
-
-                if(list != null){
-                    Log.d(logTag, "initObservers: " + "check")
-                    Log.d(logTag, "initObservers: checkdata$it")
-                    savedNewsAdapter.submitList(list)
-                    binding.iLoader.visibility = View.GONE
-                    binding.cvContainer.visibility = View.VISIBLE
-                }
+                Log.d(logTag, "initObservers: " + "check")
+                Log.d(logTag, "initObservers: checkdata$it")
+                savedNewsAdapter.submitList(list)
+                binding.iLoader.visibility = View.GONE
+                binding.cvContainer.visibility = View.VISIBLE
 
 
             } else {
-                Log.d(logTag, "initObservers: " + "error")
                 binding.tvError.text = "No saved news found"
                 binding.tvError.visibility = View.VISIBLE
                 //

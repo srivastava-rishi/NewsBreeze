@@ -31,9 +31,11 @@ constructor(
 
     private fun getNews(){
 
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = localRepository.savedNewsDao().getAllSavedNews()
-            _localNewsData.postValue(result)
+        viewModelScope.launch(Dispatchers.Default) {
+            localRepository.savedNewsDao().getAllSavedNews().let {
+                _localNewsData.postValue(it)
+            }
+
         }
     }
 

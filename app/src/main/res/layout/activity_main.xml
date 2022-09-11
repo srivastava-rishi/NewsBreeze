@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.main.MainActivity">
 
+
     <RelativeLayout
         android:id="@+id/rlRoot"
         android:layout_width="match_parent"
