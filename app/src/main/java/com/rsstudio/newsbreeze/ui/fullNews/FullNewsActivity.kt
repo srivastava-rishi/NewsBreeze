@@ -1,12 +1,10 @@
-package com.rsstudio.newsbreeze.ui.fullnews
+package com.rsstudio.newsbreeze.ui.fullNews
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.rsstudio.newsbreeze.R

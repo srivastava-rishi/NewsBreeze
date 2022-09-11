@@ -3,7 +3,6 @@ package com.rsstudio.newsbreeze.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +11,7 @@ import com.rsstudio.newsbreeze.data.network.model.ArticleData
 import com.rsstudio.newsbreeze.data.network.model.News
 import com.rsstudio.newsbreeze.databinding.ActivityMainBinding
 import com.rsstudio.newsbreeze.ui.base.BaseActivity
-import com.rsstudio.newsbreeze.ui.fullnews.FullNewsActivity
+import com.rsstudio.newsbreeze.ui.fullNews.FullNewsActivity
 import com.rsstudio.newsbreeze.ui.main.adapter.MainAdapter
 import com.rsstudio.newsbreeze.ui.main.viewModel.MainViewModel
 import com.rsstudio.newsbreeze.util.Constant

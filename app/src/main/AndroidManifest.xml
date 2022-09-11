@@ -14,11 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsBreeze">
         <activity
-            android:name=".ui.fullnews.FullNewsActivity"
+            android:name=".ui.savedNews.SavedNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fullNews.FullNewsActivity"
+            android:exported="false"
             android:resizeableActivity="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Simple_Theme_2"
-            android:exported="false" />
+            android:theme="@style/Simple_Theme_2" />
         <activity
             android:name=".ui.base.BaseActivity"
             android:exported="false" />
