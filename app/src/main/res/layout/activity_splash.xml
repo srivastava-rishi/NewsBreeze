@@ -15,7 +15,6 @@
             android:layout_height="@dimen/_150sdp"
             android:src="@drawable/logo2x"
             android:layout_centerInParent="true"
-
             />
 
 
