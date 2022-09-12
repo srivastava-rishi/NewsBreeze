@@ -8,9 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -24,9 +22,10 @@ import de.hdodenhof.circleimageview.CircleImageView
 class MainAdapter(
     private var context: Context,
     private var listener: MainAdapterListener
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() , Filterable {
 
     private var list: MutableList<ArticleData> = mutableListOf()
+    private var newsFilteredList: MutableList<ArticleData> = mutableListOf()
 
     var logTag = "@MainAdapter"
 
@@ -93,16 +92,18 @@ class MainAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = newsFilteredList[position]
         if (holder is MainAdapter.ItemViewHolder) {
             holder.container.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
             holder.onBind(item, position)
         }
     }
 
-    fun submitList(newList: List<ArticleData>) {
+    fun submitList(newsList: List<ArticleData>) {
         list.clear()
-        list.addAll(newList)
+        newsFilteredList.clear()
+        list.addAll(newsList)
+        newsFilteredList.addAll(newsList)
         notifyDataSetChanged()
     }
 
@@ -116,10 +117,43 @@ class MainAdapter(
 
 
     override fun getItemCount(): Int {
-        if (list.size != 0) {
-            return list.size
+        if (newsFilteredList.size != 0) {
+            return newsFilteredList.size
         }
         return 0
+    }
+
+    override fun getFilter(): Filter {
+
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val charString = constraint?.toString() ?: ""
+
+                if(charString.isEmpty()){
+                    newsFilteredList.clear()
+                    newsFilteredList.addAll(list)
+                } else{
+
+                    var filteredList:  MutableList<ArticleData> = mutableListOf()
+
+                    list.filter {
+                        (it.title.lowercase().startsWith(constraint.toString().lowercase().trim()))
+                    }.forEach{ filteredList.add(it)}
+                    newsFilteredList = filteredList
+                }
+
+                return FilterResults().apply { values = newsFilteredList }
+
+            }
+            override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+                if (results!!.values != null) {
+                    newsFilteredList = results.values as MutableList<ArticleData>
+                    notifyDataSetChanged()
+                }
+
+            }
+        }
     }
 
     interface MainAdapterListener {

@@ -3,6 +3,8 @@ package com.rsstudio.newsbreeze.ui.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -29,6 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.io.Serializable
@@ -65,8 +68,10 @@ class MainActivity : BaseActivity() , MainAdapter.MainAdapterListener , View.OnC
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         //
+        registerEventBus()
         initAction()
         clearDb()
+        initView()
         initRecyclerView()
         initObservers()
     }
@@ -74,7 +79,6 @@ class MainActivity : BaseActivity() , MainAdapter.MainAdapterListener , View.OnC
     private fun initAction() {
         binding.rlSave.setOnClickListener(this)
     }
-
 
     private fun initRecyclerView() {
         val llm = LinearLayoutManager(this)
@@ -115,6 +119,24 @@ class MainActivity : BaseActivity() , MainAdapter.MainAdapterListener , View.OnC
         Log.d(logTag, "error89: $item")
         intent.putExtra(Constant.PARAM_NEWS, item as Serializable)
         startActivity(intent)
+    }
+
+    private fun initView() {
+
+        binding.searchInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d(logTag, "onTextChanged: $s")
+                mainAdapter.filter.filter(s)
+            }
+        })
+
     }
 
     @SuppressLint("UseCompatLoadingForColorStateLists")
@@ -182,6 +204,19 @@ class MainActivity : BaseActivity() , MainAdapter.MainAdapterListener , View.OnC
             }
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterEventBus()
+    }
+
+    private fun registerEventBus() {
+        EventBus.getDefault().register(this)
+    }
+
+    private fun unregisterEventBus() {
+        EventBus.getDefault().unregister(this)
     }
 
 }

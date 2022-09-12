@@ -79,6 +79,7 @@
 
 
             <EditText
+                android:id="@+id/searchInput"
                 fontPath="fonts/Montserrat-Medium.ttf"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

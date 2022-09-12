@@ -4,7 +4,7 @@ import com.rsstudio.newsbreeze.data.network.model.ArticleData
 
 class DataReceiveEvent {
 
-    private var newsEntity: ArticleData? = null
+    private var news: ArticleData? = null
     private var eventTag: EventTagType = EventTagType.EVENT_NONE
 
 
@@ -12,12 +12,12 @@ class DataReceiveEvent {
         return this.eventTag == eventTag
     }
 
-    constructor(eventTag: EventTagType, messageEntity: ArticleData) {
+    constructor(eventTag: EventTagType, news: ArticleData) {
         this.eventTag= eventTag
-        this.newsEntity = messageEntity
+        this.news = news
     }
 
     fun getNews():ArticleData?{
-        return this.newsEntity
+        return this.news
     }
 }

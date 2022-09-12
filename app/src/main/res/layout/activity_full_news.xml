@@ -40,17 +40,6 @@
                 android:visibility="visible"
                 app:tint="@color/white" />
 
-            <ImageView
-                android:id="@+id/ivSaved"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:backgroundTint="@color/antiqueWhite"
-                android:src="@drawable/ic_unsave"
-                android:visibility="gone"
-                app:tint="@color/white" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -125,6 +114,7 @@
                             android:text="James Adam"
                             android:textColor="@color/chineseBlack2"
                             android:textSize="@dimen/_10ssp"
+                            android:visibility="visible"
                             tools:ignore="MissingPrefix" />
 
                         <TextView

@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -19,9 +17,10 @@ import com.rsstudio.newsbreeze.data.network.model.ArticleData
 
 class SavedNewsAdapter(
     private var context: Context,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() ,Filterable {
 
     private var list: MutableList<SavedNewsEntity> = mutableListOf()
+    private var savedNewsFilteredList: MutableList<SavedNewsEntity> = mutableListOf()
 
     var logTag = "@MainAdapter"
 
@@ -69,23 +68,58 @@ class SavedNewsAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = savedNewsFilteredList[position]
         if (holder is SavedNewsAdapter.ItemViewHolder) {
             holder.container.animation = AnimationUtils.loadAnimation(context, R.anim.anim_fade_scale)
             holder.onBind(item, position)
         }
     }
 
-    fun submitList(newList: List<SavedNewsEntity>) {
+    fun submitList(newsList: List<SavedNewsEntity>) {
         list.clear()
-        list.addAll(newList)
+        savedNewsFilteredList.clear()
+        list.addAll(newsList)
+        savedNewsFilteredList.addAll(newsList)
         notifyDataSetChanged()
+    }
+
+    override fun getFilter(): Filter {
+
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+
+                val charString = constraint?.toString() ?: ""
+
+                if(charString.isEmpty()){
+                    savedNewsFilteredList.clear()
+                    savedNewsFilteredList.addAll(list)
+                } else{
+
+                    var filteredList:  MutableList<SavedNewsEntity> = mutableListOf()
+
+                    list.filter {
+                        (it.title.lowercase().startsWith(constraint.toString().lowercase().trim()))
+                    }.forEach{ filteredList.add(it)}
+                    savedNewsFilteredList = filteredList
+                }
+
+                return FilterResults().apply { values = savedNewsFilteredList}
+
+            }
+            override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+                if (results!!.values != null) {
+                    savedNewsFilteredList = results.values as MutableList<SavedNewsEntity>
+                    notifyDataSetChanged()
+                }
+
+            }
+        }
     }
 
 
     override fun getItemCount(): Int {
-        if (list.size != 0) {
-            return list.size
+        if (savedNewsFilteredList.size != 0) {
+            return savedNewsFilteredList.size
         }
         return 0
     }
